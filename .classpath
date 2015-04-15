@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="lib" path="C:/Users/Ajay/Documents/Google Drive/Acads/6th Sem/CS6770~Knowledge Representation/Assgn/soar-testing-area/ext-executables/downloads/SoarSuite_9.4.0-Windows_64bit/SoarSuite_9.4.0-Windows_64bit/bin/java/sml.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

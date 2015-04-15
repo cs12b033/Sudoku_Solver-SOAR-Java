@@ -1,0 +1,65 @@
+sp {propose*initialize-sudoku
+   (state <s> ^superstate nil
+             -^name)
+-->
+   (<s> ^operator <o> +)
+   (<o> ^name initialize-sudoku)
+}
+
+sp {apply*initialize-sudoku
+   (state <s> ^operator <op>)
+   (<op> ^name initialize-sudoku)
+-->
+   (<s> ^name sudoku
+        ^digits <ds>)
+   (<ds> ^digit 0
+         ^digit 1
+         ^digit 2
+         ^digit 3
+         ^digit 4
+         ^digit 5
+         ^digit 6
+         ^digit 7
+         ^digit 8
+         ^digit 9)
+}
+
+sp {sudoku*propose*choose
+   (state <s> ^name sudoku
+              ^digits <ds>)
+   (<ds> ^digit <d>)
+-->
+   (<s> ^operator <op> + =)
+   (<op> ^name choose
+         ^choice <d>)
+   #(write (crlf)|propose |<d>)
+}
+sp {apply*choose
+   (state <s> ^operator <op>
+              ^io.output-link <ol>
+                           )
+   (<op> ^name choose
+         ^choice <c>
+                 )
+-->
+   (<ol> ^choice <c>)
+   (write (crlf) <c> | The problem has been solved.|)
+}
+sp {prohibit
+   (state <s> ^name sudoku
+              ^io.input-link <il>
+              ^operator <op1> +)
+   (<il> ^constraint <cons>)
+   (<op1> ^name choose
+          ^choice <c> = <cons>)
+-->
+   (<s> ^operator <op1> ~)
+}
+sp {worst-choice
+   (state <s> ^name sudoku
+              ^operator <op1> +)
+   (<op1> ^name choose
+          ^choice <c> = 0)
+-->
+   (<s> ^operator <op1> <)
+}
